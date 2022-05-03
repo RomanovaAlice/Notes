@@ -9,25 +9,20 @@ import Foundation
 
 
 
-var notesArray: [String] {
-    get {
-        // load data
-        if let array = UserDefaults.standard.array(forKey: "notesArray") as? [String] {
-            return array
-        } else {
-            return ["Your first note"]
-        }
-    }
-    set {
-        // save data
-        UserDefaults.standard.set(newValue, forKey: "notesArray")
-        UserDefaults.standard.synchronize()
-    }
-}
+var notesArray: [(heading: String, note: String)] = [
+    ("Lunches for school","Every day in elementary school in America begins at 9.20 a.m. Children have classes till 3.15 p.m. At 12 o’clock children have lunch. Many boys and girls bring their lunch from home. But some of them go for lunch to a school cafeteria. Mrs. Bradley prepares school lunches almost every weekday for her two children. Sometimes she gives the children money and they eat in the school cafeteria. But usually the children prefer to take a lunch from home. This morning Mrs. Bradley is making peanut butter and cheese sandwiches, the children's favorite. She puts two bottles of apple juice for the children to drink. She is going to put the sandwiches, some cherry tomatoes and two bananas in their lunchboxes. The lunchbox is easy for the children to carry to school."),
+    
+    ("Giraffes", "There are different kinds of animals on our planet, and all of them are very important for it. For example, everybody knows that the sharks are dangerous for people, but they are useful for cleaning seawater. There are two types of animals: domestic (or pets) and wild. People keep pets in their homes. And some wild animals are very dangerous. Domestic animals live next to people, whereas wild animals’ “homes” are forests, jungles, oceans and so on. Giraffes are very beautiful and unusual animals. They are the tallest land animals in the world. Giraffes can reach a height of 5,5 m and a weight of 900 kg. They are famous for their long necks. But does anybody know, that giraffes have a very long tongue? They even can clean the ears with it! Giraffes are usually yellow or light brown with dark stains. Giraffes live in African savannas. They can live from 20 to 30 years. It is interesting to know, that giraffes sleep only twenty minutes at a time. They sit down on the ground and bend their long neck down. Giraffes do not hunt. They eat leaves, grass, and fruit. Due to their long neck, they can reach the highest leaves on the trees that other animals cannot eat. You can often meet giraffes in city Zoos. They are very friendly and all the children like them very much."),
+    
+    ("My family", "Meet my family. There are five of us – my parents, my elder brother, my baby sister and me. First, meet my mum and dad, Jane and Michael. My mum enjoys reading and my dad enjoys playing chess with my brother Ken. My mum is slim and rather tall. She has long red hair and big brown eyes. She has a very pleasant smile and a soft voice. My mother is very kind and understanding. We are real friends. She is a housewife. As she has three children, she is always busy around the house. She takes care of my baby sister Meg, who is only three months old. My sister is very small and funny. She sleeps, eats and sometimes cries. We all help our mother and let her have a rest in the evening. Then she usually reads a book or just watches TV. My father is a doctor. He is tall and handsome. He has short dark hair and gray eyes. He is a very hardworking man. He is rather strict with us, but always fair. My elder brother Ken is thirteen, and he is very clever. He is good at Maths and always helps me with it, because I can hardly understand all these sums and problems. Ken has red hair and brown eyes. My name is Jessica. I am eleven. I have long dark hair and brown eyes. I am not as clever as my brother, though I try to do my best at school too. I am fond of dancing. Our dancing studio won The Best Dancing Studio 2015 competition last month. I am very proud of it. I also like to help my mother with my little sister very much. Our family is very united. We love each other and always try to spend more time together."),
+    
+    ("History of advertising", "To advertise means to make information public. But nowadays advertising doesn’t limit itself by a word ‘publicity’. Modern advertising has a task to show a product in a positive and pleasant way. It has an aim to make us want to buy it. But how and when did advertising appear? The advertisement has existed since antiquity time. At first there were murals that informed about gladiator fights. In the middle Ages public heralds stood in the centre of the city and gave last news. In the 15th century there was a good development of printing. After that posters and leaflets appeared. Two centuries later the first newspapers began to publish advertisements. But it is the 20th century when advertising really explodes. It followed the invention of radio and TV. In the United States companies have worked with advertisers since 1930. They invented packaging that had to attract customers. They also created an idea of product placement. It means that a product is shown in the movies. After that it gets well-known and well-sold. For example, it was made with the luxury cars which were shown in James Bond films. Nowadays the new territory of commercials is Internet with social networks. Small software called cookies allows offering ads according to the tastes of Internet users. Certainly, in the near future the commercial advertising will be personalized for each of us."),
+    
+    ("Danger of the plastic waste", "Every year more than 300 million tons of plastic are not recycled. The consequences for the nature are very serious, especially for the oceans. According to the American magazine ‘Science’ the oceans contain more than 110 million tons of plastic waste. Whole islands are covered by waste, such as Henderson Island. It is situated in the South Pacific Ocean. There is 17 million tons of waste accumulated near the island. Apart from the aesthetic inconvenience, this waste threatens animals and birds. These are a half of the seabirds and at least 200 species of fish, crustaceans and mammals living in the oceans. The main danger and harm is that they confuse this waste with the food. Earlier the explorers discovered deserted islands with the beaches of fine sand. But what will the explorers find in a future? If a future person discovers an island, there is a great probability that this island will be made only by plastic waste."),]
 
 
-func addItem(item: String) {
-    notesArray.append(item)
+func addItem(title: String, note: String) {
+    notesArray.append((title, note))
     Notes.noteTableView.reloadData()
 }
 

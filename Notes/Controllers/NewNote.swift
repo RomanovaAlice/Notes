@@ -10,9 +10,7 @@ import UIKit
 class NewNote: UIViewController {
     
     //MARK: Variables
-    private let myTextView = UITextView()
-    
-    static var text = ""
+    private let noteTextView = UITextView()
     
     
     
@@ -40,12 +38,19 @@ class NewNote: UIViewController {
     @IBAction func Save(_ sender: Any) {
         
         if textField.text?.count == 0 {
+            let alert = UIAlertController(title: "Attention!", message: "Please, enter title text", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+                         
+        } else if  noteTextView.text.count == 0 {
             let alert = UIAlertController(title: "Attention!", message: "Please, enter note text", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             
             self.present(alert, animated: true)
+            
         } else {
-            addItem(item: textField.text!)
+            addItem(title: textField.text!, note: noteTextView.text!)
         }
  
         navigationController?.popViewController(animated: true)
@@ -55,21 +60,21 @@ class NewNote: UIViewController {
     
     //MARK: MyTextView
     private func createTextView() {
-        myTextView.font = .systemFont(ofSize: 15)
-        myTextView.layer.borderWidth = 1
-        myTextView.layer.borderColor = UIColor.systemGray5.cgColor
-        myTextView.layer.cornerRadius = 6
+        noteTextView.font = .systemFont(ofSize: 15)
+        noteTextView.layer.borderWidth = 1
+        noteTextView.layer.borderColor = UIColor.systemGray5.cgColor
+        noteTextView.layer.cornerRadius = 6
         
-        view.addSubview(myTextView)
+        view.addSubview(noteTextView)
     }
     
     private func createConstraintsForTextView() {
-        myTextView.translatesAutoresizingMaskIntoConstraints = false
+        noteTextView.translatesAutoresizingMaskIntoConstraints = false
         
-        myTextView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10).isActive = true
-        myTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        myTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        myTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60).isActive = true
+        noteTextView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10).isActive = true
+        noteTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        noteTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        noteTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60).isActive = true
     }
     
     
@@ -85,7 +90,7 @@ class NewNote: UIViewController {
     
     @objc private func tap() {
         textField.resignFirstResponder()
-        myTextView.resignFirstResponder()
+        noteTextView.resignFirstResponder()
     }
 }
 
@@ -97,6 +102,6 @@ class NewNote: UIViewController {
 extension NewNote: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        myTextView.becomeFirstResponder()
+        noteTextView.becomeFirstResponder()
     }
 }

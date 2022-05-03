@@ -12,13 +12,11 @@ final class Notes: UIViewController {
     //MARK: Variables
     static let noteTableView = UITableView()
     
+    private let identifier = "Cell"
     private let headerLabel = UILabel()
-    static let hiddenLabel = UILabel()
     
-    let identifier = "Cell"
-
-
     
+
     //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +24,8 @@ final class Notes: UIViewController {
         createHeaderLabel()
         createConstraintsForHeaderLabel()
         
-        createTableView()
-        createConstraintsForTableView()
+        createNoteTableView()
+        createConstraintsForNoteTableView()
     }
     
     
@@ -52,7 +50,7 @@ final class Notes: UIViewController {
     
     
     //MARK: NoteTableView
-    private func createTableView() {
+    private func createNoteTableView() {
         
         Notes.noteTableView.dataSource = self
         Notes.noteTableView.delegate = self
@@ -62,7 +60,7 @@ final class Notes: UIViewController {
         view.addSubview(Notes.noteTableView)
     }
     
-    private func createConstraintsForTableView() {
+    private func createConstraintsForNoteTableView() {
         Notes.noteTableView.translatesAutoresizingMaskIntoConstraints = false
         
         Notes.noteTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 5).isActive = true
@@ -89,21 +87,21 @@ extension Notes: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         
-        // text
-        let number = notesArray[indexPath.row]
+        // noteTitle text
+        let number = notesArray[indexPath.row].heading
         cell.textLabel?.text = number
     
         return cell
     }
     
     
-    // height
+    // cell height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
     
-    // delete
+    // cell deleting
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -115,8 +113,17 @@ extension Notes: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    // cell selection
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    
+    // cell selection
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // note editing
+        let addingNote = AddingNote()
+        
+        addingNote.myTitle = notesArray[indexPath.row].heading
+        addingNote.myNote = notesArray[indexPath.row].note
+        
+        navigationController?.pushViewController(addingNote, animated: false)
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2943DF428218F52005BC37C /* AddingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2943DF328218F52005BC37C /* AddingNote.swift */; };
 		DA22C1BD280541980091B9C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA22C1BC280541980091B9C5 /* AppDelegate.swift */; };
 		DA22C1BF280541980091B9C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA22C1BE280541980091B9C5 /* SceneDelegate.swift */; };
 		DA22C1C4280541980091B9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA22C1C2280541980091B9C5 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2943DF328218F52005BC37C /* AddingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNote.swift; sourceTree = "<group>"; };
 		DA22C1B9280541980091B9C5 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA22C1BC280541980091B9C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA22C1BE280541980091B9C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				DA22C1D5280C73790091B9C5 /* Notes.swift */,
 				DA22C1D7280C73A10091B9C5 /* NewNote.swift */,
+				D2943DF328218F52005BC37C /* AddingNote.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				DAD379E02815C39000C3C57A /* Model.swift in Sources */,
 				DA22C1D8280C73A10091B9C5 /* NewNote.swift in Sources */,
+				D2943DF428218F52005BC37C /* AddingNote.swift in Sources */,
 				DA22C1BD280541980091B9C5 /* AppDelegate.swift in Sources */,
 				DA22C1BF280541980091B9C5 /* SceneDelegate.swift in Sources */,
 				DA22C1D6280C73790091B9C5 /* Notes.swift in Sources */,
